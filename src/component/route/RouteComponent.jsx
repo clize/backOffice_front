@@ -5,7 +5,11 @@ import AddUserComponent from "../user/AddUserComponent"
 import EditUserComponent from "../user/EditUserComponent"
 import ComCodeListComponent from "../user/ComCodeListComponent"
 import CodeListComponent from "../user/CodeListComponent"
-import TabSampleComponent from "../user/TabSampleComponent"
+import ComCodeList from "../../view/select/ComCodeList"
+
+const SiteInformation = React.lazy(() =>
+    import(/* webpackChunkName: "viwes-second-menu" */ '../../view/sample/sample')
+);
 
 const AppRouter = () => {
     return(
@@ -19,7 +23,10 @@ const AppRouter = () => {
                 <Route path="/edit-user" component={EditUserComponent} />
                 <Route path="/codes" component={ComCodeListComponent} />
                 <Route path="/codes2" component={CodeListComponent} />
-                <Route path="/codes3" component={TabSampleComponent} />
+                <Route path="/comcodelist" component={ComCodeList} />
+                <Route
+                path={`/profile`} render={props => <SiteInformation {...props} />}
+              />
             </Switch>
             </div>
             </BrowserRouter>

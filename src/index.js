@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import "./assets/css/vendor/bootstrap.min.css";
+import "./assets/css/vendor/bootstrap.rtl.only.min.css";
+// import "react-circular-progressbar/dist/styles.css";
+// import "react-perfect-scrollbar/dist/css/styles.css";
+// import "react-big-calendar/lib/css/react-big-calendar.css";
+// import "react-table/react-table.css";
+import 'react-image-lightbox/style.css';
+import { isMultiColorActive, defaultColor,themeColorStorageKey,isDarkSwitchActive } from "./constants/defaultValues";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const color =
+  (isMultiColorActive||isDarkSwitchActive ) && localStorage.getItem(themeColorStorageKey)
+    ? localStorage.getItem(themeColorStorageKey)
+    : defaultColor;
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+localStorage.setItem(themeColorStorageKey, color);
+let render = () => {
+  import('./assets/css/sass/themes/gogo.' + color + '.scss').then(x => {
+     require('./AppRenderer');
+  });
+};
+render();
