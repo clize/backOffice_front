@@ -45,6 +45,10 @@ export default function NavBar() {
                      <Button aria-controls="simple-menu" aria-haspopup="true" color="inherit" onClick={handleClick}>
                      SELECT
                      </Button>
+                     <Button aria-controls="simple-menu" aria-haspopup="true" color="inherit" a href="/batchRslt">
+                     CHECK
+                    </Button>
+
                      <Menu
                      id="simple-menu"
                      anchorEl={anchorEl}

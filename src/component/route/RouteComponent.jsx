@@ -6,6 +6,8 @@ import EditUserComponent from "../user/EditUserComponent"
 import ComCodeListComponent from "../user/ComCodeListComponent"
 import CodeListComponent from "../user/CodeListComponent"
 import ComCodeList from "../../view/select/ComCodeList"
+import BatchRsltComponent from "../check/BatchRsltComponent"
+
 
 const SiteInformation = React.lazy(() =>
     import(/* webpackChunkName: "viwes-second-menu" */ '../../view/sample/sample')
@@ -24,6 +26,7 @@ const AppRouter = () => {
                 <Route path="/codes" component={ComCodeListComponent} />
                 <Route path="/codes2" component={CodeListComponent} />
                 <Route path="/comcodelist" component={ComCodeList} />
+                <Route path="/batchRslt" component={BatchRsltComponent} />
                 <Route
                 path={`/profile`} render={props => <SiteInformation {...props} />}
               />
