@@ -1,12 +1,13 @@
 import React from 'react';
 import AppRouter from './component/route/RouteComponent';
-import NavBar from "./component/route/NavBar";
+import NavSideBar from './component/route/NavSideBar';
 import Container from '@material-ui/core/Container';
+
 
 function App() {
   return (
     <div>
-      <NavBar />
+      <NavSideBar/>
       <Container>
       <AppRouter />
       </Container>

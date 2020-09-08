@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import ApiService from "../../ApiService";
+// import ApiService from "../../ApiService";
 import BatchRsltDataTable from "./RsltTableComponent"
 
 class BatchRsltComponent extends Component {
@@ -8,8 +8,7 @@ class BatchRsltComponent extends Component {
         super(props) ;
 
         this.state = {
-            batchRslt: []
-            ,date: new Date().toLocaleTimeString
+            date: new Date().toLocaleTimeString
         }
     }
 
@@ -18,16 +17,9 @@ class BatchRsltComponent extends Component {
     }
 
     reloadBatchRslt = () => {
-        ApiService.fetchCodes()
-        .then( res => {
-
-            this.setState({
-                batchRslt: res.data.data
-            });
-        })
-        .catch(err => {
-            console.log('reloadBatchRslt() Error!', err);
-        })
+        this.setState =({
+            date: this.state.date
+        });
     }
 
     render() {
@@ -39,6 +31,7 @@ class BatchRsltComponent extends Component {
                             id="datetime-local"
                             label="배치 검색"
                             type="datetime-local"
+                            defaultValue= {this.state.date}
                             className="batchRsltTimePicker"
                             InputLabelProps={{
                             shrink: true,
