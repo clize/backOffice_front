@@ -1,12 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import UserListComponent from "../user/UserListComponent"
-import AddUserComponent from "../user/AddUserComponent"
-import EditUserComponent from "../user/EditUserComponent"
-import ComCodeListComponent from "../user/ComCodeListComponent"
-import CodeListComponent from "../user/CodeListComponent"
+import NavSideBar from './NavSideBar'
+
+import DashBoardComponent from "../menu/DashBoardComponent"
+import AddUserComponent from "../menu/AddUserComponent"
+import EditUserComponent from "../menu/EditUserComponent"
+import ComCodeListComponent from "../menu/ComCodeListComponent"
+import CodeListComponent from "../menu/CodeListComponent"
 import ComCodeList from "../../view/select/ComCodeList"
 import BatchRsltComponent from "../check/BatchRsltComponent"
+import { Container } from '@material-ui/core';
 
 
 const SiteInformation = React.lazy(() =>
@@ -17,28 +20,27 @@ const AppRouter = () => {
     return(
         <div>
             <BrowserRouter>
-            <div style={style}>
-            <Switch>
-                <Route exact path="/" component={UserListComponent} />
-                <Route path="/users" component={UserListComponent} />
-                <Route path="/add-user" component={AddUserComponent} />
-                <Route path="/edit-user" component={EditUserComponent} />
-                <Route path="/codes" component={ComCodeListComponent} />
-                <Route path="/codes2" component={CodeListComponent} />
-                <Route path="/comcodelist" component={ComCodeList} />
-                <Route path="/batchRslt" component={BatchRsltComponent} />
-                <Route
-                path={`/profile`} render={props => <SiteInformation {...props} />}
-              />
-            </Switch>
+            <div>
+              <NavSideBar />
+              <Container>
+                <Switch>
+                    <Route exact path="/" component={DashBoardComponent} />
+                    <Route path="/users" component={DashBoardComponent} />
+                    <Route path="/add-user" component={AddUserComponent} />
+                    <Route path="/edit-user" component={EditUserComponent} />
+                    <Route path="/codes" component={ComCodeListComponent} />
+                    <Route path="/codes2" component={CodeListComponent} />
+                    <Route path="/comcodelist" component={ComCodeList} />
+                    <Route path="/batchRslt" component={BatchRsltComponent} />
+                    <Route
+                    path={`/profile`} render={props => <SiteInformation {...props} />}
+                />
+                </Switch>
+              </Container>              
             </div>
             </BrowserRouter>
         </div>
     );
-}
-
-const style = {
-    marginTop: '20px'
 }
 
 export default AppRouter;

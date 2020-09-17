@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/core/Divider';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -29,11 +29,10 @@ const useStyles = makeStyles((theme) => ({
   
   grow: {
     flexGrow: 1,
-    backgroundColor: '#333333',
   },
   root: {
     display: 'flex',
-    color: '#333333',
+    color: 'black',
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -129,8 +128,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const classes = useStyles();
   const theme = useTheme();
+  const classes = useStyles(theme);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
@@ -221,7 +221,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <div className={classes.grow}>
+    <div className={classes.root}>
       <AppBar 
         position="static"
         className={clsx(classes.AppBar,{
@@ -239,9 +239,11 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            EPOS SERVER BACKOFFICE
-          </Typography>
+          <Link to="/">
+            <Typography className={classes.title} variant="h6" noWrap>
+              EPOS SERVER BACKOFFICE
+            </Typography>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
