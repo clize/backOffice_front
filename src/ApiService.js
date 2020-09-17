@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = "http://localhost:8080/pos/comcode/getComCodeList.do";
+const USER_API_BASE_URL = "http://localhost:8080/pos";
 
 class ApiService {
 
@@ -25,8 +25,14 @@ class ApiService {
     }
 
     fetchCodes(){
-        return axios.get(USER_API_BASE_URL);
+        return axios.get(USER_API_BASE_URL+ '/comcode/getComCodeList.do');
     }
+
+    fetchCodesDetail(mcode){
+        return axios.get(USER_API_BASE_URL+ '/comcode/getComCodeListSub.do',{ params: { mMedcd: mcode }})
+    }
+
+    
 
 }
 
