@@ -1,5 +1,0 @@
-const batchRsltDummy = {
-
-};
-
-export {batchRsltDummy}

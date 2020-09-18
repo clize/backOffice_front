@@ -32,7 +32,7 @@ const useRowStyles = makeStyles({
   },
   icon: {
     backgroundColor: 'white',
-  }
+  },
 });
 
 
