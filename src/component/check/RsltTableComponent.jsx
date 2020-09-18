@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
+import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -14,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import DoneIcon from '@material-ui/icons/Done';
 
 const useRowStyles = makeStyles({
   root: {
@@ -21,20 +23,28 @@ const useRowStyles = makeStyles({
       borderBottom: 'unset',
     },
   },
+  success: {
+    backgroundColor: 'green',
+    color: 'white',
+  },
+  ing: {
+    backgroundColor: 'yellow',
+  },
+  icon: {
+    backgroundColor: 'white',
+  }
 });
 
-function createData(seq, name, comment, startDt, carbs, price) {
+
+function createData(seq, name, comment, startDt, status, percent, servers) {
   return {
     seq,
     name,
     comment,
     startDt,
-    carbs,
-    price,
-    servers: [
-      { date: '2020-01-05', customerId: '11091700', amount: 3 },
-      { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
-    ],
+    status,
+    percent,
+    servers,
   };
 }
 
@@ -56,7 +66,14 @@ function Row(props) {
         </TableCell>
         <TableCell align="right">{row.comment}</TableCell>
         <TableCell align="right">{row.startDt}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
+        <TableCell align="right">
+          {
+            row.percent === 100
+            ? <Chip className={classes.success} size="small" label="완료" deleteIcon={<DoneIcon className={classes.icon}/>}/>
+            : <Chip className={classes.ing} size="small" label="진행중" />
+          }
+        </TableCell>
+        <TableCell align="right">{row.percent}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -68,22 +85,30 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell>날짜</TableCell>
+                    <TableCell>점포명</TableCell>
+                    <TableCell align="right">프로세스ID</TableCell>
+                    <TableCell align="right">프로세스명</TableCell>
+                    <TableCell align="right">배치상태</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.servers.map((serverRow) => (
-                    <TableRow key={serverRow.date}>
+                    <TableRow key={serverRow.strCode}>
                       <TableCell component="th" scope="row">
                         {serverRow.date}
                       </TableCell>
-                      <TableCell>{serverRow.customerId}</TableCell>
-                      <TableCell align="right">{serverRow.amount}</TableCell>
+                      <TableCell>{serverRow.strName}</TableCell>
+                      <TableCell align="right">{serverRow.procId}</TableCell>
+                      <TableCell align="right">{serverRow.procName}</TableCell>
                       <TableCell align="right">
-                        {Math.round(serverRow.amount * row.price * 100) / 100}
+                        {
+                          serverRow.stsInfo === 1 
+                          ? <Chip color="primary" size="small" label="완료" deleteIcon={<DoneIcon />}/>
+                          : ( serverRow.stsInfo === 0
+                            ? <Chip size="small" label="대기" />
+                            : <Chip color="secondary" size="small" label="ERROR" />)
+                        }
                       </TableCell>
                     </TableRow>
                   ))}
@@ -100,26 +125,59 @@ function Row(props) {
 Row.propTypes = {
   row: PropTypes.shape({
     comment: PropTypes.string.isRequired,
-    carbs: PropTypes.number.isRequired,
+    status: PropTypes.number.isRequired,
     startDt: PropTypes.string.isRequired,
     servers: PropTypes.arrayOf(
       PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
+        strCode: PropTypes.string.isRequired,
+        procId: PropTypes.string.isRequired,
+        procName: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
+        amount: PropTypes.number.isRequired,
       }),
     ).isRequired,
     name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    percent: PropTypes.number.isRequired,
   }).isRequired,
 };
 
 const rows = [
-  createData(1, 'preSOD', 'pre SOD 배치결과', '2020-08-24', 24, 4.0, 3.99),
-  createData(2, 'SOD', 'SOD 배치결과', '2020-08-24', 37, 4.3, 4.99),
-  createData(3, 'EOD', 'EOD 배치결과', '2020-08-24', 24, 6.0, 3.79),
-  createData(4, 'POS-PGM', 'POS 프로그램 다운로드', '2020-08-24', 67, 4.3, 2.5),
-  createData(5, 'OS', 'CPU/MEMORY/DISK', '2020-08-24', 49, 3.9, 1.5),
+  createData(1, 'preSOD', 'pre SOD 배치결과', '2020-08-24', 24, 100,
+  [
+    { strCode: '9030', strName: '흑석점', procId: 'ed_sod_pre', procName: '점포 영업전처리결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '7777', strName: '웅앵점', procId: 'ed_sod_pre', procName: '점포 영업전처리결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '4444', strName: '따리점', procId: 'ed_sod_pre', procName: '점포 영업전처리결과', date: '2020-09-17', stsInfo: 1},
+  ]),
+  createData(2, 'SOD', 'SOD 배치결과', '2020-08-24', 37, 66.6,
+  [
+    { strCode: '9030', strName: '흑석점', procId: 'ed_sod_run', procName: '점포 영업 영업개시 처리결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '7777', strName: '웅앵점', procId: 'ed_sod_run', procName: '점포 영업 영업개시 처리결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '4444', strName: '따리점', procId: 'ed_sod_run', procName: '점포 영업 영업개시 처리결과', date: '2020-09-17', stsInfo: 2},
+  ]),
+  createData(3, 'EOD', 'EOD 배치결과', '2020-08-24', 24, 55.5,
+  [
+    { strCode: '9030', strName: '흑석점', procId: 'ed_eod_trn', procName: '트란분해 체크 결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '7777', strName: '웅앵점', procId: 'ed_eod_trn', procName: '트란분해 체크 결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '4444', strName: '따리점', procId: 'ed_eod_trn', procName: '트란분해 체크 결과', date: '2020-09-17', stsInfo: 2},
+    { strCode: '9030', strName: '흑석점', procId: 'ed_eod_chk', procName: '일마감 체크 결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '7777', strName: '웅앵점', procId: 'ed_eod_chk', procName: '일마감 체크 결과', date: '2020-09-17', stsInfo: 2},
+    { strCode: '4444', strName: '따리점', procId: 'ed_eod_chk', procName: '일마감 체크 결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '9030', strName: '흑석점', procId: 'ed_eod_close', procName: 'Deadline 체크 결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '7777', strName: '웅앵점', procId: 'ed_eod_close', procName: 'Deadline 체크 결과', date: '2020-09-17', stsInfo: 0},
+    { strCode: '4444', strName: '따리점', procId: 'ed_eod_close', procName: 'Deadline 체크 결과', date: '2020-09-17', stsInfo: 0},
+  ]),
+  createData(4, 'POS-PGM', 'POS 프로그램 다운로드', '2020-08-24', 67, 4.3,
+  [
+    { strCode: '9030', strName: '흑석점', procId: 'ed_sod_pre', procName: '점포 영업전처리결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '7777', strName: '웅앵점', procId: 'ed_sod_pre', procName: '점포 영업전처리결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '4444', strName: '따리점', procId: 'ed_sod_pre', procName: '점포 영업전처리결과', date: '2020-09-17', stsInfo: 2},
+  ],),
+  createData(5, 'OS', 'CPU/MEMORY/DISK', '2020-08-24', 49, 30,
+  [
+    { strCode: '9030', strName: '흑석점', procId: 'ed_sod_pre', procName: '점포 영업전처리결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '7777', strName: '웅앵점', procId: 'ed_sod_pre', procName: '점포 영업전처리결과', date: '2020-09-17', stsInfo: 1},
+    { strCode: '4444', strName: '따리점', procId: 'ed_sod_pre', procName: '점포 영업전처리결과', date: '2020-09-17', stsInfo: 2},
+  ]),
 ];
 
 export default function BatchRsltDataTable() {

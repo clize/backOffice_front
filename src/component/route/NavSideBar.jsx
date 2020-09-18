@@ -32,9 +32,10 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: 'flex',
-    color: 'black',
   },
   appBar: {
+    backgroundColor: 'black',
+    color: 'white',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -71,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
   title: {
+    color: 'white',
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -224,7 +226,7 @@ export default function PrimarySearchAppBar() {
     <div className={classes.root}>
       <AppBar 
         position="static"
-        className={clsx(classes.AppBar,{
+        className={clsx(classes.appBar,{
           [classes.appBarShift]: open,
         })}
       >
