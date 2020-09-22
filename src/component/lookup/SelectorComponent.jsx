@@ -4,8 +4,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const BootstrapInput = withStyles((theme) => ({
   root: {
@@ -45,15 +45,68 @@ const BootstrapInput = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
+    minWidth: 120,
   },
 }));
+
+const myData = [
+    {
+        id:"1",
+        kind: "Card",
+        service: "Tran",
+    },
+    {
+        id:"2",
+        kind: "Card",
+        service: "IRT",
+    },
+    {
+        id:"3",
+        kind: "Card",
+        service: "Sum",
+    },
+    {
+        id:"4",
+        kind: "Card",
+        service: "Monitor",
+    },
+    {
+        id:"5",
+        kind: "Pay",
+        service: "IRT",
+    }
+    ,
+    {
+        id:"6",
+        kind: "Pay",
+        service: "Tran",
+    },
+    {
+        id:"7",
+        kind: "SKU",
+        service: "IRT",
+    },
+    {
+        id:"8",
+        kind: "Mobile Gift",
+        service: "Tran",
+    },
+    {
+        id:"9",
+        kind: "Mobile Gift",
+        service: "Sum",
+    },
+]
 
 export default function CustomizedSelects() {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
+  const [server, setServer] = React.useState('');
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setServer(event.target.value);
+    setAge(event.target.value)
   };
+  
   return (
     <div>
       <FormControl className={classes.margin}>
@@ -61,35 +114,44 @@ export default function CustomizedSelects() {
         <BootstrapInput id="demo-customized-textbox" />
       </FormControl>
       <FormControl className={classes.margin}>
-        <InputLabel id="demo-customized-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-helper-label">Servers</InputLabel>
         <Select
-          labelId="demo-customized-select-label"
-          id="demo-customized-select"
-          value={age}
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={server}
           onChange={handleChange}
-          input={<BootstrapInput />}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {myData.map(each => (
+                  <MenuItem value={each.kind}>{each.kind}</MenuItem>
+          ))}
+          {/* <MenuItem value={10}>CENTER</MenuItem>
+          <MenuItem value={20}>STORE</MenuItem>
+          <MenuItem value={30}>STAT</MenuItem> */}
         </Select>
+        <FormHelperText>서버별         </FormHelperText>
       </FormControl>
       <FormControl className={classes.margin}>
-        <InputLabel htmlFor="demo-customized-select-native">Age</InputLabel>
-        <NativeSelect
-          id="demo-customized-select-native"
+        <InputLabel id="demo-simple-select-helper-label">Service</InputLabel>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
           value={age}
           onChange={handleChange}
-          input={<BootstrapInput />}
         >
-          <option aria-label="None" value="" />
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
-        </NativeSelect>
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {myData.map(each => (
+                  <MenuItem value={each.kind}>{each.service}</MenuItem>
+          ))}
+          {/* <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem> */}
+        </Select>
+        <FormHelperText>서비스별</FormHelperText>
       </FormControl>
     </div>
   );

@@ -237,7 +237,6 @@ export default function PrimarySearchAppBar() {
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
-            edge="start"
           >
             <MenuIcon />
           </IconButton>
