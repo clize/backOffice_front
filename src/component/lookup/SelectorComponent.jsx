@@ -17,57 +17,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const myData = [
-    {
-        id:"1",
-        kind: "Card",
-        service: "Tran",
-    },
-    {
-        id:"2",
-        kind: "Card",
-        service: "IRT",
-    },
-    {
-        id:"3",
-        kind: "Card",
-        service: "Sum",
-    },
-    {
-        id:"4",
-        kind: "Card",
-        service: "Monitor",
-    },
-    {
-        id:"5",
-        kind: "Pay",
-        service: "IRT",
-    }
-    ,
-    {
-        id:"6",
-        kind: "Pay",
-        service: "Tran",
-    },
-    {
-        id:"7",
-        kind: "SKU",
-        service: "IRT",
-    },
-    {
-        id:"8",
-        kind: "Mobile Gift",
-        service: "Tran",
-    },
-    {
-        id:"9",
-        kind: "Mobile Gift",
-        service: "Sum",
-    },
-]
 
-export default function CustomizedSelects() {
+
+export default function CustomizedSelects(props) {
   const classes = useStyles();
+  const selectData = props.selectorData;
   const [service, setService] = React.useState('');
   const [server, setServer] = React.useState('');
   const handleChange = (event) => {
@@ -89,7 +43,7 @@ export default function CustomizedSelects() {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {myData.map(each => (
+          {selectData.map(each => (
                   <MenuItem value={each.kind}>{each.kind}</MenuItem>
           ))}
         </Select>
@@ -106,7 +60,7 @@ export default function CustomizedSelects() {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {myData.map(each => (
+          {selectData.map(each => (
                   <MenuItem value={each.kind}>{each.service}</MenuItem>
           ))}
         </Select>
