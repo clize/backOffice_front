@@ -1,91 +1,190 @@
 import React, { Component } from 'react';
 import SearchCard from './FormContent';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Selector from './SelectorComponent'
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
+import FormHelperText from '@material-ui/core/FormHelperText';
+//import Selector from './SelectorComponent'
 
 
-
-export default class IfDataComponent extends Component {
-    useStyles = makeStyles((theme) => ({
-        root: {
-          flexGrow: 1,
-        },
-        paper: {
-          padding: theme.spacing(2),
-          textAlign: 'center',
-          color: theme.palette.text.secondary,
-        },
-      }));
-    
-    state = {
-        myData : [
-            {
-                id:"1",
-                kind: "Card",
-                service: "Tran",
-            },
-            {
-                id:"2",
-                kind: "Card",
-                service: "IRT",
-            },
-            {
-                id:"3",
-                kind: "Card",
-                service: "Sum",
-            },
-            {
-                id:"4",
-                kind: "Card",
-                service: "Monitor",
-            },
-            {
-                id:"5",
-                kind: "Pay",
-                service: "IRT",
-            }
-            ,
-            {
-                id:"6",
-                kind: "Pay",
-                service: "Tran",
-            },
-            {
-                id:"7",
-                kind: "SKU",
-                service: "IRT",
-            },
-            {
-                id:"8",
-                kind: "Mobile Gift",
-                service: "Tran",
-            },
-            {
-                id:"9",
-                kind: "Mobile Gift",
-                service: "Sum",
-            },
-        ]
+const styles = theme => ({
+    root: {
+      flexGrow: 1,
+    },
+    margin: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+    cardRoot: {
+      minWidth: 275,
+    },
+    bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+    card:{
+      padding: theme.spacing(2),
     }
+  });
+
+class IfDataComponent extends Component {    
+    constructor(props){
+        super(props);
+        this.state = {
+            myData : [
+                {
+                    //id:"1",
+                    kind: "Card",
+                    service: ["Tran","IRT","Sum","Monitor"]
+                },
+                // {
+                //     id:"1",
+                //     kind: "Card",
+                //     service: "IRT",
+                // },
+                // {
+                //     id:"1",
+                //     kind: "Card",
+                //     service: "Sum",
+                // },
+                // {
+                //     id:"4",
+                //     kind: "Card",
+                //     service: "Monitor",
+                // },
+                {
+                    //id:"5",
+                    kind: "Pay",
+                    service: ["IRT","Tran"]
+                },
+                // {
+                //     id:"6",
+                //     kind: "Pay",
+                //     service: "Tran",
+                // },
+                {
+                    //id:"7",
+                    kind: "SKU",
+                    service: ["IRT",]
+                },
+                {
+                    //id:"8",
+                    kind: "Mobile Gift",
+                    service: ["Tran","Sum"]
+                },
+                // {
+                //     //id:"9",
+                //     kind: "Mobile Gift",
+                //     service: "Sum",
+                // },
+            ],
+            service: '',
+            kind: '',
+        };
+    };
+
+    handleChange = (event) => {
+        this.setState(()=> {
+            return {
+                service: event.target.value,
+                kind: event.target.value,
+            }
+        })
+
+    };
 
     render() {
+        const { classes } = this.props;
+
         return (
-                <div className={this.useStyles.root}>
+                <div className={classes.root}>
                     <h1>전문 조회</h1>
-                    <Selector  selectorData = {this.state.myData}/>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6}>
-                            <SearchCard/>
+                    <div>
+                        <FormControl className={classes.margin}>
+                            <InputLabel id="demo-simple-select-helper-label">System</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-helper-label"
+                                id="demo-simple-select-helper"
+                                value={this.state.kind}
+                                onChange={this.handleChange}
+                            >
+                                <MenuItem value="">
+                                <em>None</em>
+                                </MenuItem>
+                                {this.state.myData.map(each => (
+                                        <MenuItem value={each.kind}>{each.kind}</MenuItem>
+                                ))}
+                            </Select>
+                            <FormHelperText>유관계 종류별</FormHelperText>
+                            </FormControl>
+                            <FormControl className={classes.margin}>
+                            <InputLabel id="demo-simple-select-helper-label">Service</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-helper-label"
+                                id="demo-simple-select-helper"
+                                value={this.state.service}
+                                onChange={this.handleChange}
+                            >
+                                <MenuItem value="">
+                                <em>None</em>
+                                </MenuItem>
+                                {this.state.myData.map(each => 
+                                    each.service.map(subService => (
+                                        <MenuItem value={each.kind}>{subService}</MenuItem>    
+                                    ))
+                                )}
+                            </Select>
+                            <FormHelperText>서비스별</FormHelperText>
+                            </FormControl>
+                            <FormControl className={classes.margin} >
+                            <TextField
+                                id="outlined-primary"
+                                label="Search"
+                                variant="outlined"
+                                color="primary"
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton>
+                                            <SearchIcon />
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                helperText="조회하고 싶은 전문을 붙여넣으세요"
+                            />
+                        </FormControl>
+                    </div>
+                    <div>
+                        <Grid>
+                            <SearchCard selectedService = {this.state.service} selectedKind = {this.state.kind} />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <SearchCard selectorData = {this.state.myData}/>
-                        </Grid>
-                    </Grid>
+                    </div>
+
+                    
                 </div>
 
-                
-                
         );
     }
 }
+
+export default withStyles(styles, { withTheme: true })(IfDataComponent);

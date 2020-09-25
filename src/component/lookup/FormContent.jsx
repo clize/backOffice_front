@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme)=>({
   }
 }));
 
-export default function FormContent() {
+export default function FormContent(props) {
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
 
@@ -35,16 +35,26 @@ export default function FormContent() {
             <Card className={classes.root}>
               <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                Word of the Day
+                 전문 조회 결과
                 </Typography>
                 <Typography variant="h5" component="h2">
-                be{bull}nev{bull}o{bull}lent
+                {bull} 종류: {props.selectedKind} - {props.selectedService} 
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
-                adjective
+                 여기에 각 전문 소스 명 표시 
                 </Typography>
                 <Typography variant="body2" component="p">
-                well meaning and kindly.
+                뿌려지는 전문 데이터들..
+                <br />
+                뿌려지는 전문 데이터들...
+                <br />
+                뿌려지는 전문 데이터들....
+                <br />
+                뿌려지는 전문 데이터들.....
+                <br />
+                Parsed result of requested data.....
+                <br />
+                Parsed result of requested data.......
                 <br />
                 {'"a benevolent smile"'}
                 </Typography>

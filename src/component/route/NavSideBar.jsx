@@ -63,10 +63,10 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   drawerHeader: {
-    
+    backgroundColor: 'black',
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(0, 1),
+    //padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
@@ -305,7 +305,9 @@ export default function PrimarySearchAppBar() {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? 
+              <ChevronLeftIcon style={{ color: 'white' }}/> 
+              : <ChevronRightIcon style={{ color: 'white' }} />}
           </IconButton>
         </div>
         <SideContent />
