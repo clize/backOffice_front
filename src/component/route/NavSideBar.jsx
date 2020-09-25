@@ -32,9 +32,10 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: 'flex',
-    color: 'black',
   },
   appBar: {
+    backgroundColor: 'black',
+    color: 'white',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -62,15 +63,16 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   drawerHeader: {
-    
+    backgroundColor: 'black',
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(0, 1),
+    //padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
   title: {
+    color: 'white',
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -224,7 +226,7 @@ export default function PrimarySearchAppBar() {
     <div className={classes.root}>
       <AppBar 
         position="static"
-        className={clsx(classes.AppBar,{
+        className={clsx(classes.appBar,{
           [classes.appBarShift]: open,
         })}
       >
@@ -235,7 +237,6 @@ export default function PrimarySearchAppBar() {
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
-            edge="start"
           >
             <MenuIcon />
           </IconButton>
@@ -304,7 +305,9 @@ export default function PrimarySearchAppBar() {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? 
+              <ChevronLeftIcon style={{ color: 'white' }}/> 
+              : <ChevronRightIcon style={{ color: 'white' }} />}
           </IconButton>
         </div>
         <SideContent />

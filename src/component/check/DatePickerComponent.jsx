@@ -1,15 +1,30 @@
 import 'date-fns';
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import DateFnsUtils from '@date-io/date-fns';
+import SearchSharpIcon from '@material-ui/icons/SearchSharp';
+
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
+
+
+const useStyles = makeStyles((theme) => ({
+    container: {
+      gridGap: theme.spacing(1),
+    },
+  }));
+  
+
+
 export default function MaterialUIPickers() {
-    
+    const classes = useStyles();
+
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = (date) => {
@@ -18,7 +33,13 @@ export default function MaterialUIPickers() {
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="flex-start">
+      <Grid
+        className={classes.container}
+        container
+        direction="row"
+        justify="flex-start"
+        alignItems="baseline"
+        >
         <KeyboardDatePicker
           disableToolbar
           variant="inline"
@@ -42,6 +63,7 @@ export default function MaterialUIPickers() {
             'aria-label': 'change time',
           }}
         />
+        <Button size="small" variant="contained"  endIcon={<SearchSharpIcon />}> 검색 </Button>
       </Grid>
     </MuiPickersUtilsProvider>
   );

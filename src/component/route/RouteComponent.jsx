@@ -9,6 +9,7 @@ import ComCodeListComponent from "../menu/ComCodeListComponent"
 import CodeListComponent from "../menu/CodeListComponent"
 import ComCodeList from "../../view/select/ComCodeList"
 import BatchRsltComponent from "../check/BatchRsltComponent"
+import IfDataComponent from "../lookup/IfDataComponent"
 import { Container } from '@material-ui/core';
 
 
@@ -32,6 +33,7 @@ const AppRouter = () => {
                     <Route path="/codes2" component={CodeListComponent} />
                     <Route path="/comcodelist" component={ComCodeList} />
                     <Route path="/batchRslt" component={BatchRsltComponent} />
+                    <Route path="/lookup-if-data" component={IfDataComponent} />
                     <Route
                     path={`/profile`} render={props => <SiteInformation {...props} />}
                 />
