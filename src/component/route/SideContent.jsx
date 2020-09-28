@@ -43,23 +43,25 @@ const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: 'rgba(0,0,0,0)',
     paddingTop: theme.spacing(0),
   },
   nested: {
+      color: 'white',
       paddingLeft: theme.spacing(4),
   },
   headmenu: {
-    backgroundColor: 'black',
-    color: 'white',
     paddingRight: theme.spacing(1),
   },
+  menuRow: {
+    color: 'white',
+  },
 });
-
-class SideContent extends Component {
+       
+class SideContent extends Component {                                                        
     
   state = { settings: [ { id: "1", open: true, }
-                      , { id: "2", open: true, }
+                      , { id: "2", open: true, }                             
                       , { id: "3", open: true, }],
             selected: null };
 
@@ -114,20 +116,23 @@ class SideContent extends Component {
                 timeout="auto"
                 unmountOnExit
               >
-                <List component="div" disablePadding="true" >
+                <List
+                component="div"
+                disablePadding="true"
+                >
                   {each.subMenu.map(subData => (
-                    <ListItem 
+                  <Link to={subData.dir}>
+                    <ListItem
                     key={subData.id}
                     button
                     onClick = { ()=> this.updateSelected(subData.id)}
                     selected={selected=== subData.id}
                     className={classes.nested}
                     >
-                      <Link to={subData.dir}>
-                        <ListItemText inset primary={subData.name} />
-                      </Link>
                       
+                    <ListItemText className={classes.menuRow} inset primary={subData.name} /> 
                     </ListItem>
+                  </Link>
                   ))}
                 </List>
               </Collapse>

@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
-    backgroundColor: 'black',
-    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
+    color: 'black',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -49,30 +49,37 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
+  //석 삼 자 메뉴아이콘
   menuButton: {
+    backgroundColor: 'black',
+    color: 'white',
+    borderRadius: '50%',
     marginRight: theme.spacing(2),
   },
   hide: {
     display: 'none',
   },
+  //왼쪽에서 나오는 사이드메뉴
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
   },
   drawerPaper: {
+    backgroundColor: '#33373d',
+    color: 'white',
     width: drawerWidth,
   },
   drawerHeader: {
-    backgroundColor: 'black',
     display: 'flex',
     alignItems: 'center',
-    //padding: theme.spacing(0, 1),
+    padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
   title: {
-    color: 'white',
+    color: 'black',
+    fontWeight: 900,
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -229,6 +236,7 @@ export default function PrimarySearchAppBar() {
         className={clsx(classes.appBar,{
           [classes.appBarShift]: open,
         })}
+        elevation={0}
       >
         <Toolbar>
           <IconButton
@@ -298,6 +306,7 @@ export default function PrimarySearchAppBar() {
         className={classes.drawer}
         variant="persistent"
         anchor="left"
+        elevation={1}
         open={open}
         classes={{
           paper: classes.drawerPaper,
