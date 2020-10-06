@@ -47,14 +47,14 @@ const styles = theme => ({
     paddingTop: theme.spacing(0),
   },
   nested: {
-      color: 'white',
+      color: 'black',
       paddingLeft: theme.spacing(4),
   },
   headmenu: {
     paddingRight: theme.spacing(1),
   },
   menuRow: {
-    color: 'white',
+    //color: '#AFAFAF',
   },
 });
        
@@ -99,9 +99,9 @@ class SideContent extends Component {
                 <ListItemIcon>
                     {
                         {
-                            1: <DesktopMacIcon style={{ color: 'white' }} />,
-                            2: <LibraryBooksIcon style={{ color: 'white' }} />,
-                            3: <AssignmentReturnedIcon style={{ color: 'white' }} />
+                            1: <DesktopMacIcon />,
+                            2: <LibraryBooksIcon />,
+                            3: <AssignmentReturnedIcon />
                         }[each.id]
                     }
                 </ListItemIcon>

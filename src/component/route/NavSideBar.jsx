@@ -65,8 +65,8 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   drawerPaper: {
-    backgroundColor: '#33373d',
-    color: 'white',
+    backgroundColor: 'white',
+    color: '',
     width: drawerWidth,
   },
   drawerHeader: {
@@ -79,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: 'black',
+    fontFamily: 'Libre Barcode 128 Text',
     fontWeight: 900,
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -88,9 +89,9 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade('#f7f7f7', 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade('#c9c9c9', 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -250,7 +251,7 @@ export default function PrimarySearchAppBar() {
           </IconButton>
           <Link to="/">
             <Typography className={classes.title} variant="h6" noWrap>
-              EPOS SERVER BACKOFFICE
+              POS BACKOFFICE
             </Typography>
           </Link>
           <div className={classes.search}>
@@ -315,8 +316,8 @@ export default function PrimarySearchAppBar() {
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? 
-              <ChevronLeftIcon style={{ color: 'white' }}/> 
-              : <ChevronRightIcon style={{ color: 'white' }} />}
+              <ChevronLeftIcon style={{ color: '#AFAFAF' }}/> 
+              : <ChevronRightIcon style={{ color: '#AFAFAF' }} />}
           </IconButton>
         </div>
         <SideContent />
