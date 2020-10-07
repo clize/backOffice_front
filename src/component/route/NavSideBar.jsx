@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
-    backgroundColor: 'black',
-    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
+    color: 'black',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -49,30 +49,38 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
+  //석 삼 자 메뉴아이콘
   menuButton: {
+    backgroundColor: 'black',
+    color: 'white',
+    borderRadius: '50%',
     marginRight: theme.spacing(2),
   },
   hide: {
     display: 'none',
   },
+  //왼쪽에서 나오는 사이드메뉴
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
   },
   drawerPaper: {
+    backgroundColor: 'white',
+    color: '',
     width: drawerWidth,
   },
   drawerHeader: {
-    backgroundColor: 'black',
     display: 'flex',
     alignItems: 'center',
-    //padding: theme.spacing(0, 1),
+    padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
   title: {
-    color: 'white',
+    color: 'black',
+    fontFamily: 'Libre Barcode 128 Text',
+    fontWeight: 900,
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -81,9 +89,9 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade('#f7f7f7', 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade('#c9c9c9', 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -229,6 +237,7 @@ export default function PrimarySearchAppBar() {
         className={clsx(classes.appBar,{
           [classes.appBarShift]: open,
         })}
+        elevation={0}
       >
         <Toolbar>
           <IconButton
@@ -242,7 +251,7 @@ export default function PrimarySearchAppBar() {
           </IconButton>
           <Link to="/">
             <Typography className={classes.title} variant="h6" noWrap>
-              EPOS SERVER BACKOFFICE
+              POS BACKOFFICE
             </Typography>
           </Link>
           <div className={classes.search}>
@@ -298,6 +307,7 @@ export default function PrimarySearchAppBar() {
         className={classes.drawer}
         variant="persistent"
         anchor="left"
+        elevation={1}
         open={open}
         classes={{
           paper: classes.drawerPaper,
@@ -306,8 +316,8 @@ export default function PrimarySearchAppBar() {
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? 
-              <ChevronLeftIcon style={{ color: 'white' }}/> 
-              : <ChevronRightIcon style={{ color: 'white' }} />}
+              <ChevronLeftIcon style={{ color: '#AFAFAF' }}/> 
+              : <ChevronRightIcon style={{ color: '#AFAFAF' }} />}
           </IconButton>
         </div>
         <SideContent />

@@ -1,21 +1,29 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import './index.css';
 import "./assets/css/vendor/bootstrap.min.css";
 import "./assets/css/vendor/bootstrap.rtl.only.min.css";
-// import "react-circular-progressbar/dist/styles.css";
-// import "react-perfect-scrollbar/dist/css/styles.css";
-// import "react-big-calendar/lib/css/react-big-calendar.css";
-// import "react-table/react-table.css";
-import 'react-image-lightbox/style.css';
-import { isMultiColorActive, defaultColor,themeColorStorageKey,isDarkSwitchActive } from "./constants/defaultValues";
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-const color =
-  (isMultiColorActive||isDarkSwitchActive ) && localStorage.getItem(themeColorStorageKey)
-    ? localStorage.getItem(themeColorStorageKey)
-    : defaultColor;
 
-localStorage.setItem(themeColorStorageKey, color);
-let render = () => {
-  import('./assets/css/sass/themes/gogo.' + color + '.scss').then(x => {
-     require('./AppRenderer');
+const theme = createMuiTheme({
+    typography: {
+    fontFamily: '"Noto Sans KR", serif',
+    },
   });
-};
-render();
+
+ReactDOM.render(
+  <React.StrictMode>
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

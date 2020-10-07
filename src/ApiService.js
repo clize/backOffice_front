@@ -28,9 +28,9 @@ class ApiService {
         return axios.get(USER_API_BASE_URL+ '/comcode/getComCodeList.do');
     }
 
-    fetchCodesDetail(mcode){
-        return axios.get(USER_API_BASE_URL+ '/comcode/getComCodeListSub.do',{ params: { mMedcd: mcode }})
-    }
+    // fetchCodesDetail(mcode){
+    //     return axios.get(USER_API_BASE_URL+ '/comcode/getComCodeListSub.do',{ params: { mMedcd: mcode }})
+    // }
 
     
 
