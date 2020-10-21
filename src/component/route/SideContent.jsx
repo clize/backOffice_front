@@ -60,9 +60,9 @@ const styles = theme => ({
        
 class SideContent extends Component {                                                        
     
-  state = { settings: [ { id: "1", open: true, }
-                      , { id: "2", open: true, }                             
-                      , { id: "3", open: true, }],
+  state = { settings: [ { id: "1", open: false, }
+                      , { id: "2", open: false, }                             
+                      , { id: "3", open: false, }],
             selected: null };
 
   handleClick = id => {

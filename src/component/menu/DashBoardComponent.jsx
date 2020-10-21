@@ -19,7 +19,8 @@ class DashBoardComponent extends Component {
 
 const style = {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    //backgroundColor: 'red',
 }
 
 export default DashBoardComponent;

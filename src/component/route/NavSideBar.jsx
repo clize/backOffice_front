@@ -20,7 +20,6 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
-
 import SideContent from './SideContent';
 
 const drawerWidth = 240;
@@ -71,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerHeader: {
     display: 'flex',
+    fontWeight: 500,
     alignItems: 'center',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
@@ -79,11 +79,13 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: 'black',
-    fontFamily: 'Libre Barcode 128 Text',
-    fontWeight: 900,
+    fontFamily: '"Libre Barcode 128 Text"',
+    //fontSize: '2rem',
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
+      fontSize: '2.4rem',
+      fontFamily: '"Libre Barcode 128 Text"',
     },
   },
   search: {
@@ -92,6 +94,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: fade('#f7f7f7', 0.15),
     '&:hover': {
       backgroundColor: fade('#c9c9c9', 0.25),
+    },
+    '&:focus': {
+      backgroundColor: '#c9c9c9',
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -120,7 +125,10 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
     },
   },
   sectionDesktop: {
@@ -250,7 +258,7 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Link to="/">
-            <Typography className={classes.title} variant="h6" noWrap>
+            <Typography className={classes.title} noWrap>
               POS BACKOFFICE
             </Typography>
           </Link>
@@ -314,6 +322,9 @@ export default function PrimarySearchAppBar() {
         }}
       >
         <div className={classes.drawerHeader}>
+            <Typography noWrap>
+              MENU
+            </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? 
               <ChevronLeftIcon style={{ color: '#AFAFAF' }}/> 
