@@ -17,6 +17,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-draggable": "^4.4.3",
+    "react-google-charts": "^3.0.15",
     "react-image": "^4.0.3",
     "react-image-lightbox": "^5.1.1",
     "react-router-dom": "^5.2.0",
