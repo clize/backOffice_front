@@ -95,9 +95,6 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: fade('#c9c9c9', 0.25),
     },
-    '&:focus': {
-      backgroundColor: '#c9c9c9',
-    },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
@@ -129,6 +126,10 @@ const useStyles = makeStyles((theme) => ({
       '&:focus': {
         width: '20ch',
       },
+      backgroundColor: fade('#f7f7f7', 0.15),
+      '&:hover': {
+      backgroundColor: fade('#c9c9c9', 0.25),
+    },
     },
   },
   sectionDesktop: {
