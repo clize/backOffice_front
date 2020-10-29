@@ -140,7 +140,7 @@ class DashBoardComponent extends Component {
                     <Grid item xs>
                         <Paper className={classes.paper}>
                             <Typography variant="h6" > 일중 마스터 현황 </Typography>
-                                {/* <Table className={classes.table} size="small" aria-label="simple table" style={{tableLayout: 'auto'}}>
+                                <Table className={classes.table} size="small" aria-label="simple table" style={{tableLayout: 'auto'}}>
                                     <TableHead>
                                       <TableRow>
                                         <TableCell>배치명</TableCell>
@@ -165,7 +165,7 @@ class DashBoardComponent extends Component {
                                         </TableRow>
                                       ))}
                                     </TableBody>
-                                  </Table> */}
+                                  </Table>
                         </Paper>
                     </Grid>
                     <Grid item xs>
