@@ -3,6 +3,7 @@ import Chart from "react-google-charts";
 import { withStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import DoneIcon from '@material-ui/icons/Done';
+import AddIcon from '@material-ui/icons/Add';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -28,7 +29,7 @@ const styles = theme => ({
 
     paper: {
       minWidth: 275,
-      minHeight: 320,
+      minHeight: 340,
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
@@ -37,6 +38,20 @@ const styles = theme => ({
         backgroundColor: '#BFB8EB',
         color: 'white',
     },
+    titleRow:{
+        width: '100%',
+        marginBottom: '1em',
+    },
+    titleText:{
+      display: 'inline-block',
+      textAlign: 'center', 
+    },
+    titleIcon:{
+        float: 'right',
+    },
+    doughnutDiv:{
+        marginTop:'2em',
+    }
     
   });
 
@@ -120,6 +135,7 @@ const barOptions = {
     createWorkLogData(3, '2020-10-21', '중앙서버 전환 장애대응메뉴얼'),
     createWorkLogData(4, '2020-10-20', 'DailyCheck List'),
     createWorkLogData(5, '2020-10-20', '서버 계정정보'),
+    createWorkLogData(6, '2020-10-19', 'Keymap 처리'),
   ];
 
 class DashBoardComponent extends Component {
@@ -142,7 +158,11 @@ class DashBoardComponent extends Component {
                 <Grid container spacing={3}>
                     <Grid item xs>
                         <Paper className={classes.paper}>
-                            <Typography variant="subtitle2" > 일자 별 거래 건수 </Typography>
+                            <div className={classes.titleRow}>
+                              <Typography variant="h6" className={classes.titleText}> 일자 별 거래 건수 </Typography>
+                              <AddIcon className={classes.titleIcon} />
+                            </div>
+                            
                             <Bar 
                                 data={barData}
                                 width={300}
@@ -153,7 +173,10 @@ class DashBoardComponent extends Component {
                     </Grid>
                     <Grid item xs>
                         <Paper className={classes.paper}>
-                            <Typography variant="h6" > 일중 마스터 현황 </Typography>
+                            <div className={classes.titleRow}>
+                              <Typography variant="h6"className={classes.titleText} > 일중 마스터 현황 </Typography>
+                              <AddIcon className={classes.titleIcon} />
+                            </div>
                                 <Table className={classes.table} size="small" aria-label="simple table" style={{tableLayout: 'auto'}}>
                                     <TableHead>
                                       <TableRow>
@@ -184,7 +207,10 @@ class DashBoardComponent extends Component {
                     </Grid>
                     <Grid item xs>
                         <Paper className={classes.paper}>
-                            <Typography variant="subtitle2" > 시간대별 AMS LOG </Typography>
+                          <div className={classes.titleRow}>
+                            <Typography variant="h6"className={classes.titleText} > 시간대별 AMS LOG </Typography>
+                            <AddIcon className={classes.titleIcon} />
+                          </div>
                         <Chart
                               height={'300px'}
                               chartType="Bar"
@@ -213,7 +239,10 @@ class DashBoardComponent extends Component {
                     </Grid>
                     <Grid item xs>
                         <Paper className={classes.paper}>
-                            <Typography variant="h6" > 서버별 배치결과 </Typography>
+                            <div className={classes.titleRow}>
+                              <Typography variant="h6"className={classes.titleText} > 서버별 배치결과 </Typography>
+                              <AddIcon className={classes.titleIcon} />
+                            </div>
                             <Table className={classes.table} size="small" aria-label="simple table" style={{tableLayout: 'auto'}}>
                                 <TableHead>
                                   <TableRow>
@@ -245,17 +274,34 @@ class DashBoardComponent extends Component {
                     <Grid item xs
                     >
                         <Paper className={classes.paper}>
-                            <Typography variant="h6" > AMS LOG 유형 </Typography>
-                            <Doughnut
+                            <div className={classes.titleRow}>
+                              <Typography variant="h6"className={classes.titleText} > AMS LOG 유형 </Typography>
+                              <AddIcon className={classes.titleIcon} />
+                            </div>
+                            <div className={classes.doughnutDiv} width="100%">
+                              <Doughnut
                                 data={doughnutData}
-                                style={{display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',}}/>
+                                width={"240%"}
+                                options={{
+                                  responsive: true,
+                                  legend: {
+                                      display: true,
+                                      position: "bottom",
+                                      label: {
+                                        boxWidth: 20,
+                                      }
+                                    }
+                                }}
+                              />
+                            </div>
                         </Paper>
                     </Grid>
                     <Grid item xs>
                         <Paper className={classes.paper}>
-                        <Typography variant="h6" > 중요업무이력 </Typography>
+                          <div className={classes.titleRow}>
+                            <Typography variant="h6"className={classes.titleText} >중요업무이력 </Typography>
+                            <AddIcon className={classes.titleIcon} />
+                          </div>
                         <Table className={classes.table} size="small" aria-label="simple table">
                                 <TableHead>
                                   <TableRow>
