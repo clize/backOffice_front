@@ -27,7 +27,7 @@ npm i react-google-charts
  ┃ ┃ ┣ 📜BatchRsltComponent.jsx                     배치결과 메뉴 메인<br/>
  ┃ ┃ ┣ 📜DatePickerComponent.jsx                    날짜를 조회하는 일자/시간 선택 컴포넌트<br/>
  ┃ ┃ ┗ 📜RsltTableComponent.jsx                     테이블 컴포넌트<br/>
- ┃ ┣ 📂lookup
+ ┃ ┣ 📂lookup<br/>
  ┃ ┃ ┣ 📜FormContent.jsx                            DB에서 컨텐츠를 조회해서 카드 컴포넌트에 뿌려주는 역할<br/>
  ┃ ┃ ┣ 📜IfDataComponent.jsx                        전문조회 메인<br/>
  ┃ ┃ ┗ 📜SearchCardInfo.jsx                         전문조회 결과를 나타내는 카드 컴포넌트<br/>
