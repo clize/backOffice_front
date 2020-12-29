@@ -24,28 +24,28 @@ npm i react-google-charts
  ┃<br/>
  ┣ 📂component<br/>
  ┃ ┣ 📂check<br/>
- ┃ ┃ ┣ 📜BatchRsltComponent.jsx                     배치결과 메뉴 메인<br/>
- ┃ ┃ ┣ 📜DatePickerComponent.jsx                    날짜를 조회하는 일자/시간 선택 컴포넌트<br/>
- ┃ ┃ ┗ 📜RsltTableComponent.jsx                     테이블 컴포넌트<br/>
+ ┃ ┃ ┣ 📜BatchRsltComponent.jsx&#9;&#9;&#9;배치결과 메뉴 메인<br/>
+ ┃ ┃ ┣ 📜DatePickerComponent.jsx&#9;&#9;&#9;날짜를 조회하는 일자/시간 선택 컴포넌트<br/>
+ ┃ ┃ ┗ 📜RsltTableComponent.jsx&#9;&#9;&#9;테이블 컴포넌트<br/>
  ┃ ┣ 📂lookup<br/>
- ┃ ┃ ┣ 📜FormContent.jsx                            DB에서 컨텐츠를 조회해서 카드 컴포넌트에 뿌려주는 역할<br/>
- ┃ ┃ ┣ 📜IfDataComponent.jsx                        전문조회 메인<br/>
- ┃ ┃ ┗ 📜SearchCardInfo.jsx                         전문조회 결과를 나타내는 카드 컴포넌트<br/>
+ ┃ ┃ ┣ 📜FormContent.jsx&#9;&#9;&#9;DB에서 컨텐츠를 조회해서 카드 컴포넌트에 뿌려주는 역할<br/>
+ ┃ ┃ ┣ 📜IfDataComponent.jsx&#9;&#9;&#9;전문조회 메인<br/>
+ ┃ ┃ ┗ 📜SearchCardInfo.jsx&#9;&#9;&#9;전문조회 결과를 나타내는 카드 컴포넌트<br/>
  ┃ ┣ 📂menu<br/>
- ┃ ┃ ┣ 📜AddUserComponent.jsx                       성우담당님이 추가하신 부분<br/>
- ┃ ┃ ┣ 📜ClockComponent.jsx                         현재 시각을 알려주는 컴포넌트<br/>
- ┃ ┃ ┣ 📜CodeListComponent.jsx                      성우담당님이 추가하신 부분<br/>
- ┃ ┃ ┣ 📜ComCodeListComponent.jsx                   성우담당님이 추가하신 부분<br/>
- ┃ ┃ ┣ 📜DashBoardComponent.jsx                     백오피스 메인 대쉬보드<br/>
- ┃ ┃ ┗ 📜EditUserComponent.jsx                      성우담당님이 추가하신 부분<br/>
+ ┃ ┃ ┣ 📜AddUserComponent.jsx&#9;&#9;&#9;성우담당님이 추가하신 부분<br/>
+ ┃ ┃ ┣ 📜ClockComponent.jsx&#9;&#9;&#9;현재 시각을 알려주는 컴포넌트<br/>
+ ┃ ┃ ┣ 📜CodeListComponent.jsx&#9;&#9;&#9;성우담당님이 추가하신 부분<br/>
+ ┃ ┃ ┣ 📜ComCodeListComponent.jsx&#9;&#9;&#9;성우담당님이 추가하신 부분<br/>
+ ┃ ┃ ┣ 📜DashBoardComponent.jsx&#9;&#9;&#9;백오피스 메인 대쉬보드<br/>
+ ┃ ┃ ┗ 📜EditUserComponent.jsx&#9;&#9;&#9;성우담당님이 추가하신 부분<br/>
  ┃ ┗ 📂route<br/>
- ┃ ┃ ┣ 📜NavSideBar.jsx                             백오피스 네비게이션바, 및 사이드메뉴 틀을 관리하는 컴포넌트<br/>
- ┃ ┃ ┣ 📜RouteComponent.jsx                         라우팅 기능을 담당하는 컴포넌트.<br/>
- ┃ ┃ ┗ 📜SideContent.jsx                            사이드 메뉴의 항목들을 관리하는 메뉴<br/>
+ ┃ ┃ ┣ 📜NavSideBar.jsx&#9;&#9;&#9;백오피스 네비게이션바, 및 사이드메뉴 틀을 관리하는 컴포넌트<br/>
+ ┃ ┃ ┣ 📜RouteComponent.jsx&#9;&#9;&#9;라우팅 기능을 담당하는 컴포넌트.<br/>
+ ┃ ┃ ┗ 📜SideContent.jsx&#9;&#9;&#9;사이드 메뉴의 항목들을 관리하는 메뉴<br/>
  ┃<br/>
- ┣ 📂components               차트, 캐러셀뷰, 노티피케이션 라이브러리 javascript 모음 폴더<br/>
+ ┣ 📂components&#9;&#9;&#9;차트, 캐러셀뷰, 노티피케이션 라이브러리 javascript 모음 폴더<br/>
  ┃<br/>
- ┣ 📂view                     성우담당님이 추가하신 부분<br/>
+ ┣ 📂view&#9;&#9;&#9;성우담당님이 추가하신 부분<br/>
  ┃<br/>
  ┣ 📜ApiService.js<br/>
  ┣ 📜App.css<br/>
