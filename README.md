@@ -1,3 +1,67 @@
+## POS서버 백오피스 프론트엔드
+
+### 개발언어 및 사용 라이브러리
+
+- React.js
+- react-chartjs-2
+- react-google-charts
+
+#### 차트 라이브러리 다운 필요
+
+```
+npm install --save react-chartjs-2 chart.js
+npm i react-google-charts
+```
+아니면 yarn을 이용하셔도 됩니다. 자세한 내용은 [chartjs](https://www.npmjs.com/package/react-chartjs-2) 과 [google chart](https://react-google-charts.com/) 참조
+
+<br/>
+
+### 프론트 구조도 소개
+
+
+📦src
+ ┣ 📂assets : css 및 bootstrap 파일 저장
+ ┃
+ ┣ 📂component
+ ┃ ┣ 📂check
+ ┃ ┃ ┣ 📜BatchRsltComponent.jsx                     배치결과 메뉴 메인
+ ┃ ┃ ┣ 📜DatePickerComponent.jsx                    날짜를 조회하는 일자/시간 선택 컴포넌트
+ ┃ ┃ ┗ 📜RsltTableComponent.jsx                     테이블 컴포넌트
+ ┃ ┣ 📂lookup
+ ┃ ┃ ┣ 📜FormContent.jsx                            DB에서 컨텐츠를 조회해서 카드 컴포넌트에 뿌려주는 역할
+ ┃ ┃ ┣ 📜IfDataComponent.jsx                        전문조회 메인
+ ┃ ┃ ┗ 📜SearchCardInfo.jsx                         전문조회 결과를 나타내는 카드 컴포넌트
+ ┃ ┣ 📂menu
+ ┃ ┃ ┣ 📜AddUserComponent.jsx                       성우담당님이 추가하신 부분
+ ┃ ┃ ┣ 📜ClockComponent.jsx                         현재 시각을 알려주는 컴포넌트
+ ┃ ┃ ┣ 📜CodeListComponent.jsx                      성우담당님이 추가하신 부분
+ ┃ ┃ ┣ 📜ComCodeListComponent.jsx                   성우담당님이 추가하신 부분
+ ┃ ┃ ┣ 📜DashBoardComponent.jsx                     백오피스 메인 대쉬보드
+ ┃ ┃ ┗ 📜EditUserComponent.jsx                      성우담당님이 추가하신 부분
+ ┃ ┗ 📂route
+ ┃ ┃ ┣ 📜NavSideBar.jsx                             백오피스 네비게이션바, 및 사이드메뉴 틀을 관리하는 컴포넌트
+ ┃ ┃ ┣ 📜RouteComponent.jsx                         라우팅 기능을 담당하는 컴포넌트.
+ ┃ ┃ ┗ 📜SideContent.jsx                            사이드 메뉴의 항목들을 관리하는 메뉴
+ ┃
+ ┣ 📂components               차트, 캐러셀뷰, 노티피케이션 라이브러리 javascript 모음 폴더
+ ┃
+ ┣ 📂view                     성우담당님이 추가하신 부분
+ ┃
+ ┣ 📜ApiService.js            
+ ┣ 📜App.css
+ ┣ 📜App.js
+ ┣ 📜App.test.js
+ ┣ 📜AppRenderer.js
+ ┣ 📜index.css
+ ┣ 📜index.js
+ ┣ 📜logo.svg
+ ┣ 📜serviceWorker.js
+ ┗ 📜setupTests.js
+
+
+
+------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
