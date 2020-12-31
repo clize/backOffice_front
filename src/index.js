@@ -18,6 +18,9 @@ const defaultTheme = createMuiTheme({
       },
       secondary:{
         main: '#BFB8EB'
+      },
+      thirdly:{
+        main : '#AFAFAF' 
       }
     }
   });
