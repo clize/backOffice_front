@@ -18,7 +18,6 @@ npm i react-google-charts
 
 ### 프론트 구조도 소개
 
-<pre>
 📦src<br/>
  ┣ 📂assets : css 및 bootstrap 파일 저장<br/>
  ┃<br/>
@@ -45,7 +44,7 @@ npm i react-google-charts
  ┃<br/>
  ┣ 📂components : 차트, 캐러셀뷰, 노티피케이션 라이브러리 javascript 모음 폴더<br/>
  ┃<br/>
- ┣ 📂view;성우담당님이 추가하신 부분<br/>
+ ┣ 📂view : 성우담당님이 추가하신 부분<br/>
  ┃<br/>
  ┣ 📜ApiService.js<br/>
  ┣ 📜App.css<br/>
@@ -58,7 +57,6 @@ npm i react-google-charts
  ┣ 📜serviceWorker.js<br/>
  ┗ 📜setupTests.js<br/>
 <br/>
-<pre/>
 
 ------
 
