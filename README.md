@@ -106,13 +106,16 @@ body {
 ### 대쉬보드 세팅
 
 대쉬보드의 다양한 그래프 컬러들을 primary, secondary등 global setting으로 변경하려 노력했지만, 안타깝게도 워낙 다양한 chart library를 사용하고 있어서 material ui와 연동이 되지 않는다.
-
-> AS-IS : color theme 하드코딩
+<br/>
+> AS-IS : color theme 하드코딩 <br/>
 > TO-BE : global setting이 된 컬러들을 변수로 가져와서 각 chart 라이브러리 인수에 넣어주기 
 
-
+<br/>
 
 -----
+
+<br/>
+<br/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
