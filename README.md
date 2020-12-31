@@ -22,22 +22,22 @@ npm i react-google-charts
  ┣ 📂assets : css 및 bootstrap 파일 저장<br/>
  ┃<br/>
  ┣ 📂component<br/>
- ┃ ┣ 📂check<br/> ### 메뉴 > MONITOR 
+ ┃ ┣ 📂check ### 메뉴 > MONITOR <br/>
  ┃ ┃ ┣ 📜BatchRsltComponent.jsx : 배치결과 메뉴 메인<br/>
  ┃ ┃ ┣ 📜DatePickerComponent.jsx : 날짜를 조회하는 일자/시간 선택 컴포넌트<br/>
  ┃ ┃ ┗ 📜RsltTableComponent.jsx : 테이블 컴포넌트<br/>
- ┃ ┣ 📂lookup<br/> ### 메뉴 > LOOKUP (조회)
+ ┃ ┣ 📂lookup ### 메뉴 > LOOKUP (조회) <br/>
  ┃ ┃ ┣ 📜FormContent.jsx : DB에서 컨텐츠를 조회해서 카드 컴포넌트에 뿌려주는 역할<br/>
  ┃ ┃ ┣ 📜IfDataComponent.jsx : 전문조회 메인<br/>
  ┃ ┃ ┗ 📜SearchCardInfo.jsx : 전문조회 결과를 나타내는 카드 컴포넌트<br/>
- ┃ ┣ 📂menu<br/> ### 메인 (메인 메뉴 관리)
+ ┃ ┣ 📂menu ### 메인 (메인 메뉴 관리) <br/>
  ┃ ┃ ┣ 📜AddUserComponent.jsx : 성우담당님이 추가하신 부분<br/>
  ┃ ┃ ┣ 📜ClockComponent.jsx : 현재 시각을 알려주는 컴포넌트<br/>
  ┃ ┃ ┣ 📜CodeListComponent.jsx : 성우담당님이 추가하신 부분<br/>
  ┃ ┃ ┣ 📜ComCodeListComponent.jsx : 성우담당님이 추가하신 부분<br/>
  ┃ ┃ ┣ 📜DashBoardComponent.jsx : 백오피스 메인 대쉬보드<br/>
  ┃ ┃ ┗ 📜EditUserComponent.jsx : 성우담당님이 추가하신 부분<br/>
- ┃ ┗ 📂route<br/> ### 메뉴 라우팅 
+ ┃ ┗ 📂route ### 메뉴 라우팅 <br/> 
  ┃ ┃ ┣ 📜NavSideBar.jsx : 백오피스 네비게이션바, 및 사이드메뉴 틀을 관리하는 컴포넌트<br/>
  ┃ ┃ ┣ 📜RouteComponent.jsx : 라우팅 기능을 담당하는 컴포넌트<br/>
  ┃ ┃ ┗ 📜SideContent.jsx : 사이드 메뉴의 항목들을 관리하는 메뉴<br/>
