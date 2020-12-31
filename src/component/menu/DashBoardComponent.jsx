@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Chart from "react-google-charts";
+import { Link } from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import DoneIcon from '@material-ui/icons/Done';
@@ -12,7 +14,6 @@ import TableCell from '@material-ui/core/TableCell';
 //import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Typography from '@material-ui/core/Typography';
 
 import { Doughnut, Bar } from 'react-chartjs-2';
@@ -30,6 +31,7 @@ const styles = theme => ({
     paper: {
       minWidth: 275,
       minHeight: 340,
+      maxHeight: 360,
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
@@ -43,10 +45,12 @@ const styles = theme => ({
         marginBottom: '1em',
     },
     titleText:{
+      color: 'black',
       display: 'inline-block',
       textAlign: 'center', 
     },
     titleIcon:{
+        color: '#AFAFAF',
         float: 'right',
     },
     doughnutDiv:{
@@ -112,7 +116,8 @@ const barOptions = {
                 offsetGridLines: true
             }
         }]
-    }
+    },
+    // reponsive: true,
 };
 
   function createData(seq, name, startDt, status) {
@@ -158,61 +163,65 @@ class DashBoardComponent extends Component {
                 <Grid container spacing={3}>
                     <Grid item xs>
                         <Paper className={classes.paper}>
+                          <Link to="/">
                             <div className={classes.titleRow}>
                               <Typography variant="h6" className={classes.titleText}> 일자 별 거래 건수 </Typography>
                               <AddIcon className={classes.titleIcon} />
                             </div>
-                            
+                          </Link>                            
                             <Bar 
                                 data={barData}
-                                width={300}
-                                height={240}
+                                height="240%"
                                 options={barOptions}
                             />
                         </Paper>
                     </Grid>
                     <Grid item xs>
                         <Paper className={classes.paper}>
+                          <Link to="/">
                             <div className={classes.titleRow}>
                               <Typography variant="h6"className={classes.titleText} > 일중 마스터 현황 </Typography>
                               <AddIcon className={classes.titleIcon} />
                             </div>
-                                <Table className={classes.table} size="small" aria-label="simple table" style={{tableLayout: 'auto'}}>
-                                    <TableHead>
-                                      <TableRow>
-                                        <TableCell>배치명</TableCell>
-                                        <TableCell>시작일</TableCell>
-                                        <TableCell>진행상태</TableCell>
-                                        <TableCell>진행내역&nbsp;(%)</TableCell>
-                                      </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                      {rows.map((row) => (
-                                        <TableRow key={row.seq}>
-                                          <TableCell>{row.name}</TableCell>
-                                          <TableCell>{row.startDt}</TableCell>
-                                          <TableCell>
-                                          {
-                                            row.status === 100
-                                            ? <Chip className={classes.success} size="small" label="완료" deleteIcon={<DoneIcon className={classes.icon}/>}/>
-                                            : <Chip className={classes.ing} size="small" label="진행중" />
-                                          }
-                                          </TableCell>
-                                          <TableCell>{row.status}</TableCell>
-                                        </TableRow>
-                                      ))}
-                                    </TableBody>
-                                  </Table>
+                          </Link>
+                          <Table className={classes.table} size="small" aria-label="simple table" style={{tableLayout: 'auto'}}>
+                              <TableHead>
+                                <TableRow>
+                                  <TableCell>배치명</TableCell>
+                                  <TableCell>시작일</TableCell>
+                                  <TableCell>진행상태</TableCell>
+                                  <TableCell>진행내역&nbsp;(%)</TableCell>
+                                </TableRow>
+                              </TableHead>
+                              <TableBody>
+                                {rows.map((row) => (
+                                  <TableRow key={row.seq}>
+                                    <TableCell>{row.name}</TableCell>
+                                    <TableCell>{row.startDt}</TableCell>
+                                    <TableCell>
+                                    {
+                                      row.status === 100
+                                      ? <Chip className={classes.success} size="small" label="완료" deleteIcon={<DoneIcon className={classes.icon}/>}/>
+                                      : <Chip className={classes.ing} size="small" label="진행중" />
+                                    }
+                                    </TableCell>
+                                    <TableCell>{row.status}</TableCell>
+                                  </TableRow>
+                                ))}
+                              </TableBody>
+                            </Table>
                         </Paper>
                     </Grid>
                     <Grid item xs>
                         <Paper className={classes.paper}>
-                          <div className={classes.titleRow}>
-                            <Typography variant="h6"className={classes.titleText} > 시간대별 AMS LOG </Typography>
-                            <AddIcon className={classes.titleIcon} />
-                          </div>
+                          <Link to="/">
+                            <div className={classes.titleRow}>
+                              <Typography variant="h6"className={classes.titleText} > 시간대별 AMS LOG </Typography>
+                              <AddIcon className={classes.titleIcon} />
+                            </div>
+                          </Link>
                         <Chart
-                              height={'300px'}
+                              height={'280px'}
                               chartType="Bar"
                               loader={
                                 <div align="center"
@@ -239,10 +248,12 @@ class DashBoardComponent extends Component {
                     </Grid>
                     <Grid item xs>
                         <Paper className={classes.paper}>
+                          <Link to="/batchRslt">
                             <div className={classes.titleRow}>
                               <Typography variant="h6"className={classes.titleText} > 서버별 배치결과 </Typography>
                               <AddIcon className={classes.titleIcon} />
                             </div>
+                          </Link>
                             <Table className={classes.table} size="small" aria-label="simple table" style={{tableLayout: 'auto'}}>
                                 <TableHead>
                                   <TableRow>
@@ -274,14 +285,16 @@ class DashBoardComponent extends Component {
                     <Grid item xs
                     >
                         <Paper className={classes.paper}>
+                          <Link to="/">
                             <div className={classes.titleRow}>
                               <Typography variant="h6"className={classes.titleText} > AMS LOG 유형 </Typography>
                               <AddIcon className={classes.titleIcon} />
                             </div>
+                          </Link>
                             <div className={classes.doughnutDiv} width="100%">
                               <Doughnut
                                 data={doughnutData}
-                                width={"240%"}
+                                width="240%"
                                 options={{
                                   responsive: true,
                                   legend: {
@@ -298,10 +311,12 @@ class DashBoardComponent extends Component {
                     </Grid>
                     <Grid item xs>
                         <Paper className={classes.paper}>
-                          <div className={classes.titleRow}>
-                            <Typography variant="h6"className={classes.titleText} >중요업무이력 </Typography>
-                            <AddIcon className={classes.titleIcon} />
-                          </div>
+                          <Link to="/">
+                            <div className={classes.titleRow}>
+                              <Typography variant="h6"className={classes.titleText} >중요업무이력 </Typography>
+                              <AddIcon className={classes.titleIcon} />
+                            </div>
+                          </Link>
                         <Table className={classes.table} size="small" aria-label="simple table">
                                 <TableHead>
                                   <TableRow>

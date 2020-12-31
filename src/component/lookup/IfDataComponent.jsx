@@ -53,52 +53,61 @@ class IfDataComponent extends Component {
             myData : [
                 {
                     //id:"1",
+                    // ["Tran","IRT","Sum","Monitor"]
+                    id: "1",
                     kind: "Card",
-                    service: ["Tran","IRT","Sum","Monitor"]
+                    kind_id: "1",
+                    service: "Tran"
                 },
-                // {
-                //     id:"1",
-                //     kind: "Card",
-                //     service: "IRT",
-                // },
-                // {
-                //     id:"1",
-                //     kind: "Card",
-                //     service: "Sum",
-                // },
-                // {
-                //     id:"4",
-                //     kind: "Card",
-                //     service: "Monitor",
-                // },
                 {
-                    //id:"5",
+                    id: "2",
+                    kind: "Card",
+                    kind_id: "1",
+                    service: "IRT"
+                },
+                {
+                    id: "3",
+                    kind: "Card",
+                    kind_id: "1",
+                    service: "Sum"
+                },
+                {
+                    id: "4",
+                    kind: "Card",
+                    kind_id: "1",
+                    service: "Monitor"
+                },
+                {
+                    id:"5",
                     kind: "Pay",
-                    service: ["IRT","Tran"]
+                    kind_id: "2",
+                    service: "IRT"
                 },
-                // {
-                //     id:"6",
-                //     kind: "Pay",
-                //     service: "Tran",
-                // },
                 {
-                    //id:"7",
+                    id:"6",
+                    kind: "Pay",
+                    kind_id: "2",
+                    service: "Tran"
+                },
+                {
+                    id:"7",
                     kind: "SKU",
-                    service: ["IRT",]
+                    kind_id: "3",
+                    service: "IRT"
                 },
                 {
-                    //id:"8",
+                    id:"8",
                     kind: "Mobile Gift",
-                    service: ["Tran","Sum"]
+                    kind_id: "4",
+                    service: "Tran"
                 },
-                // {
-                //     //id:"9",
-                //     kind: "Mobile Gift",
-                //     service: "Sum",
-                // },
+                {
+                    id:"9",
+                    kind: "Mobile Gift",
+                    kind_id: "4",
+                    service: "Sum"
+                },
             ],
-            service: '',
-            kind: '',
         };
     };
 
@@ -131,7 +140,7 @@ class IfDataComponent extends Component {
                                 <em>None</em>
                                 </MenuItem>
                                 {this.state.myData.map(each => (
-                                        <MenuItem value={each.kind}>{each.kind}</MenuItem>
+                                        <MenuItem value={each.id}>{each.kind}</MenuItem>
                                 ))}
                             </Select>
                             <FormHelperText>유관계 종류별</FormHelperText>
@@ -148,8 +157,8 @@ class IfDataComponent extends Component {
                                 <em>None</em>
                                 </MenuItem>
                                 {this.state.myData.map(each => 
-                                    each.service.map(subService => (
-                                        <MenuItem value={each.kind}>{subService}</MenuItem>    
+                                    each.kind_id.map(subService => (
+                                        <MenuItem value={subService.id}>{subService.service}</MenuItem>    
                                     ))
                                 )}
                             </Select>

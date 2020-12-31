@@ -27,7 +27,7 @@ const myData = [
     nameHeader: "LOOKUP",
     subMenu: [{ id: "2.1", name: "공통코드TABLE", dir: "/comcodelist" }
             , { id: "2.2", name: "점포코드 조회", dir: "/codes2" }
-            , { id: "2.3", name: "POS서버 조회", dir: "/"}
+            , { id: "2.3", name: "POS 거래 조회", dir: "/"}
             , { id: "2.4", name: "전문 조회", dir: "/lookup-if-data" }]
   },
   {
