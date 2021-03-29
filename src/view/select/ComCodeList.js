@@ -26,7 +26,7 @@ class ComCodeList extends Component {
         .then( res => {
 
             this.setState({
-                codes: res.data.data
+                codes: res.data
             });
         })
         .catch(err => {
@@ -84,16 +84,16 @@ class ComCodeList extends Component {
                                 </thead>
                                 <tbody>
                                 {this.state.codes.map( code => 
-                                <tr key={code.MEDCD}>
-                                    <td component="th" scope="code">{code.MEDCD}</td>
-                                    <td>{code.MEDCD_NM}</td>
-                                    <td>{code.USE_YN}</td>
-                                    <td>{code.CHG_ID}</td>
-                                    <td>{code.CHG_DT}</td>   
-                                    <td>{code.REG_ID}</td>
-                                    <td>{code.REG_DT}</td>    
-                                    <td><ComCodeModal mcode={code.MEDCD} 
-                                    mcode_nm={code.MEDCD_NM} 
+                                <tr key={code.medcd}>
+                                    <td component="th" scope="code">{code.medcd}</td>
+                                    <td>{code.medcd_nm}</td>
+                                    <td>{code.use_yn}</td>
+                                    <td>{code.chg_id}</td>
+                                    <td>{code.chg_dt}</td>   
+                                    <td>{code.reg_id}</td>
+                                    <td>{code.reg_dt}</td>    
+                                    <td><ComCodeModal mcode={code.medcd} 
+                                    mcode_nm={code.medcd_nm} 
                                     buttonLabel={"상세"}></ComCodeModal></td>
                                 </tr>
                                 )}
