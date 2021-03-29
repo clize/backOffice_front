@@ -195,7 +195,7 @@ export default function BatchRsltDataTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+           {rows.map((row) => (
             <Row key={row.name} row={row} />
           ))}
         </TableBody>

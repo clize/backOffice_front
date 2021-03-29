@@ -6,9 +6,9 @@ import DashBoardComponent from "../menu/DashBoardComponent"
 import AddUserComponent from "../menu/AddUserComponent"
 import EditUserComponent from "../menu/EditUserComponent"
 import ComCodeListComponent from "../menu/ComCodeListComponent"
-import CodeListComponent from "../menu/CodeListComponent"
 import ComCodeList from "../../view/select/ComCodeList"
 import BatchRsltComponent from "../check/BatchRsltComponent"
+import ComCodeComponent from "../master/ComCodeComponent"
 import IfDataComponent from "../lookup/IfDataComponent"
 import { Container } from '@material-ui/core';
 
@@ -30,8 +30,8 @@ const AppRouter = () => {
                     <Route path="/add-user" component={AddUserComponent} />
                     <Route path="/edit-user" component={EditUserComponent} />
                     <Route path="/codes" component={ComCodeListComponent} />
-                    <Route path="/codes2" component={CodeListComponent} />
                     <Route path="/comcodelist" component={ComCodeList} />
+                    <Route path="/comcode" component={ComCodeComponent} />
                     <Route path="/batchRslt" component={BatchRsltComponent} />
                     <Route path="/lookup-if-data" component={IfDataComponent} />
                     <Route
